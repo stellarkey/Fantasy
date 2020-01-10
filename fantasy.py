@@ -1,21 +1,34 @@
 def main():
-    test = Fantasy("Hello world!")
-    test.show()
-    pass
+    Sim = Simulator()
+    Sim.createFantasy()
+    
+        
+class Simulator():
+    def createFantasy(self):
+        print("-----------------hello, sims begin.-----------------\n")
+        fantasy = Fantasy("Hello world! I'm a fantasy.")
+        fantasy.show()
+        reality = Reality("Hello world! I'm a reality.")
+        reality.show()
+        idea = Idea("Hello world! I'm a idea.", reality, fantasy)
+        idea.show()
+        imbalanced_idea = Idea("Hello world! I'm an imbalanced idea.", fantasy, idea)
+        imbalanced_idea.show()
 
-class Fantasy(object):
+class Fantasy():
     """一个基本的幻想
     type options: fantasy, reality, idea
-
     """
-    type = ""
-    con = "" # connotation
+    type = "fantasy"
+    con = "" # concept/connotation
     pre = None
     succ = None
-    order = 0.0
-
-    def __init__(self, connotation: str = "", pre: Fantasy = None, succ: Fantasy = None):
-        self.type = "fantasy"
+    ''' pre&succ are "Fantasy"s being connected by this specific fantasy
+    a fantasy is "None" only when it is unimaginable or it doesn't exist
+    '''
+    order = 0.0 # the order of it
+    
+    def __init__(self, connotation: str = "", pre = None, succ = None):
         self.con = connotation
         self.pre = pre
         self.succ = succ
@@ -27,24 +40,30 @@ class Fantasy(object):
             order_b = succ.order
         self.order = (order_a + order_b)/2 + 1
         
-    def show(self):
+    def show(self): # details of a fantasy
         print("Fantasy: \"" + self.con + "\"")
         print(" - type: " + self.type)
         if self.pre != None:
             print(" - pre : " + self.pre.con)
-        else:
-            print(" - pre : " + "None")
         if self.succ != None:
             print(" - succ: " + self.succ.con)
-        else:
-            print(" - succ: " + "None")
         print(" - order: " + str(self.order))
 
-class Reality(object):
-    pass
+class Reality(Fantasy):
+    """一个基本的现实
+    """
+    def __init__(self, connotation: str = "", pre = None, succ = None):
+        super(Reality, self).__init__(connotation, pre, succ)
+        self.type = "reality"
+        
 
-class Idea(object):
-    pass
+class Idea(Fantasy):
+    """一个基本的联想
+    """
+    def __init__(self, connotation: str = "", pre = None, succ = None):
+        super(Idea, self).__init__(connotation, pre, succ)
+        self.type = "idea"
+        
 
 class Fantasizone(object):
     """幻想空间
