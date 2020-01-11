@@ -1,0 +1,35 @@
+type,con,pre,succ,order,fantasy_list
+reality,banana,,,,
+reality,strawberry,,,,
+reality,apple,,,,
+reality,pickle,,,,
+reality,cola,,,,
+reality,me,,,,
+reality,basketball,,,,
+reality,ping-pong,,,,
+reality,tennis,,,,
+feature,ball game,,,,"basketball,ping-pong,tennis"
+fantasy,my love,,,,
+reality,church,,,,
+reality,Helen Green,,,,
+reality,John Wick,,,,
+feature,people,,,,"me,Helen Green,John Wick"
+idea,I love to eat strawberry,me,strawberry,1,
+idea,I love to eat apple,me,apple,1,
+idea,I hate to eat banana,me,banana,1,
+idea,I hate to eat pickles,me,pickle,1,
+idea,love to drink,me,cola,1,
+idea,I love to live in church,me,church,1,
+idea,I love to play ball games,me,ball game,1,
+idea,I love my lover,me,my love,1,
+feature,love to eat,,,,"I love to eat strawberry,I love to eat apple"
+feature,hate to eat,,,,"I hate to eat banana,I hate to eat pickles,I hate to eat chiken"
+feature,interest,,,,"love to eat,love to drink,love to live in,love to play,love to sing,love to dance"
+fantasy,dragen,,,,
+fantasy,witcher,,,,
+fantasy,witch,,,,
+fantasy,人参果,,,,
+reality,酒精,,,,
+reality,alcohol,,,,
+idea,Chinese "酒精" to English "alcohol",酒精,alcohol,1,
+idea,English "alcohol" to Chinese "酒精",alcohol,酒精,1,
