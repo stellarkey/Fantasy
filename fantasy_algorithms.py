@@ -50,11 +50,14 @@ class FantasyAlgorithmsSimulator():
 
     def create_fantasizone_from_csv(self):
         filepath = "data/fantasizone_example.csv"
+        print(pd.read_csv(filepath))
         fz = csv_to_fantasizone(filepath, "测试想界")
         fz.show()
         fz.feature_reduction()
         fz.show()
         fz.sort().show()
+        fz.sort_by_order().show()
+        print("===> FZ's order =", fz.get_order())
 
 
 def is_isolated(fantasy: Fantasy, fantasizone: Fantasizone):

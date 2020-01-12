@@ -69,6 +69,7 @@ class Fantasizone():
             fantasy.simple_show()
         if self.isEmpty:
             print(" - [Empty] fantasizone.")
+        return self
 
     def exist(self, fantasy: Fantasy):
         for fan in self.fantasy_list:
@@ -125,6 +126,10 @@ class Fantasizone():
         """
         self.fantasy_list.sort(key=lambda x : x.sort_key)
         return self
+    
+    def sort_by_order(self):
+        self.fantasy_list.sort(key=lambda x : x.order)
+        return self
 
     def feature_reduction(self):
         reserve_list = []
@@ -161,6 +166,18 @@ class Fantasizone():
     def reset_fantasy_orders(self):
         pass
 
+    def get_order(self):
+        """Notice: this order is the order of the whole fantasizone
+
+        FZ_order = max{all fatasy_order}
+        
+        """
+        order = 0.0
+        for fantasy in self.fantasy_list:
+            order = max(order, fantasy.order)
+        return order
+
+
 class Realistizone(Fantasizone):
     """现实空间/真实域/实界/RZ
     A realistizone is a collection of realities.
@@ -196,6 +213,7 @@ class Feature(Fantasy):
         print(" - feature_ideas: ")
         for idea in self.feature_idea_list:
             idea.simple_show("\t")
+        return self
 
     def get_fantasy_list(self):
         fantasy_list = []
