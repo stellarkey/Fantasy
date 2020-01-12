@@ -45,6 +45,15 @@ class Fantasy():
             self.order = 0
             pass # somewhere else will automatically use "set_order" function to finish it
         
+    def __lt__(self, another):
+        return self.sort_key < another.sort_key
+    def __gt__(self, another):
+        return self.sort_key > another.sort_key
+    def __le__(self, another):
+        return self.sort_key <= another.sort_key
+    def __ge__(self, another):
+        return self.sort_key >= another.sort_key
+    
     def show(self):
         """details of a fantasy
         """

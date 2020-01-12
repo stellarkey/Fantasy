@@ -38,12 +38,14 @@ class FantasizoneSimulator():
         FZ = Fantasizone("My FZ")
         FZ.add(A).show()
         B = Fantasy("123")
-        FZ.remove(B).show()
+        # FZ.remove(B).show()
+        FZ -= B
+        FZ.show()
         C = Reality("312")
         D = Fantasy("321")
 
         M = Fantasizone("My M fantasizone")
-        M.add(B).show()
+        (M + B).show()
         M.add([C, D]).show()
         M.clear().show()
 
@@ -61,6 +63,15 @@ class Fantasizone():
         if fantasy_list != []:
             self.add(fantasy_list)
             self.isEmpty = False
+    
+    def __add__(self, another): # Commutative law is not satisfied here
+        return self.add(another)
+    def __sub__(self, another): # Commutative law is not satisfied here
+        return self.remove(another)
+    def __or__(self, another):  # Commutative law is not satisfied here
+        return self.add(another)
+    def __len__(self):
+        return len(self.fantasy_list)
     
     def show(self):
         print("------------------------------")
@@ -124,7 +135,8 @@ class Fantasizone():
     def sort(self):
         """keep order: reality < fantasy < idea < feature
         """
-        self.fantasy_list.sort(key=lambda x : x.sort_key)
+        # self.fantasy_list.sort(key=lambda x : x.sort_key)
+        self.fantasy_list.sort()
         return self
     
     def sort_by_order(self):
@@ -208,6 +220,9 @@ class Feature(Fantasy):
             tmp_idea = Idea(fantasy.con + "-->" + self.con, fantasy, self)
             self.feature_idea_list.append(tmp_idea)
     
+    def __len__(self):
+        return len(self.feature_idea_list)
+
     def show_all(self):
         super(Feature, self).show()
         print(" - feature_ideas: ")
