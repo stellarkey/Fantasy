@@ -56,6 +56,7 @@ class Fantasy():
             print(" - succ: " + self.succ.con)
         if self.order != 0.0:
             print(" - order: " + str(self.order))
+        return self
 
     def simple_show(self, table: str = ""):
         print(table + " - con:\"" + self.con + "\"", end='')
@@ -71,6 +72,7 @@ class Fantasy():
         if self.type == "feature":
             print("\t - fantasy_list: " + str(self.get_fantasy_con_list()), end="")
         print("")
+        return self
 
     def is_fantasy(self):
         return self.type == "fantasy"
@@ -106,6 +108,7 @@ class Idea(Fantasy):
     
     def show_walk_through(self):
         print(self.pre.con + " --> " + self.con + " --> " + self.succ.con)
+        return self
     
 class RealIdea(Idea):
     type = "real_idea"
