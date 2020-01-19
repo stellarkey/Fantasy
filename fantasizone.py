@@ -45,7 +45,7 @@ class FantasizoneSimulator():
         D = Fantasy("321")
 
         M = Fantasizone("My M fantasizone")
-        (M + B).show()
+        (B + M).show()
         M.add([C, D]).show()
         M.clear().show()
 
@@ -64,7 +64,9 @@ class Fantasizone():
             self.add(fantasy_list)
             self.isEmpty = False
     
-    def __add__(self, another): # Commutative law is not satisfied here
+    def __add__(self, another):
+        return self.add(another)
+    def __radd__(self, another):
         return self.add(another)
     def __sub__(self, another): # Commutative law is not satisfied here
         return self.remove(another)
@@ -72,6 +74,8 @@ class Fantasizone():
         return self.add(another)
     def __len__(self):
         return len(self.fantasy_list)
+    # def __str__(self):
+    #     return self.show()
     
     def show(self):
         print("------------------------------")
